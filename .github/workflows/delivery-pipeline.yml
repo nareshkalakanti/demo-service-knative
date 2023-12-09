@@ -19,7 +19,7 @@ jobs:
           cache: gradle
       - name: Compile and test application
         run: |
-          demo-service
+          cd demo-service
           chmod +x gradlew
           ./gradlew build
   package-service:
@@ -37,9 +37,8 @@ jobs:
           cache: gradle
       - name: Containerize and publish image
         run: |
-          demo-service
           chmod +x gradlew
-          ./gradlew bootBuildImage --publishImage --imageName nareshkalakanti/demo-service-knative-goto:1.0 -PregistryUrl=${{ secrets.REGISTRY_URL }} -PregistryUsername=${{ secrets.REGISTRY_USERNAME }} -PregistryToken=${{ secrets.REGISTRY_TOKEN }}
+          ./gradlew bootBuildImage --publishImage --imageName nareshkalakanti/demo-service-goto:1.0 -PregistryUrl=${{ secrets.REGISTRY_URL }} -PregistryUsername=${{ secrets.REGISTRY_USERNAME }} -PregistryToken=${{ secrets.REGISTRY_TOKEN }}
 
   build-native:
     name: Build Demo Native
@@ -55,7 +54,6 @@ jobs:
           cache: gradle
       - name: Compile and test application
         run: |
-          demo-service
           chmod +x gradlew
           ./gradlew build
   package-native:
@@ -73,6 +71,6 @@ jobs:
           cache: gradle
       - name: Containerize and publish image
         run: |
-          demo-service
+          cd demo-native
           chmod +x gradlew
-          ./gradlew bootBuildImage --publishImage --imageName nareshkalakanti/demo-service-knative-goto:1.0 -PregistryUrl=${{ secrets.REGISTRY_URL }} -PregistryUsername=${{ secrets.REGISTRY_USERNAME }} -PregistryToken=${{ secrets.REGISTRY_TOKEN }}
+          ./gradlew bootBuildImage --publishImage --imageName nareshkalakanti/demo-native-goto:1.0 -PregistryUrl=${{ secrets.REGISTRY_URL }} -PregistryUsername=${{ secrets.REGISTRY_USERNAME }} -PregistryToken=${{ secrets.REGISTRY_TOKEN }}
