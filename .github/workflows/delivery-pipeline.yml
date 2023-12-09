@@ -19,7 +19,7 @@ jobs:
           cache: gradle
       - name: Compile and test application
         run: |
-          cd demo-service-knative
+          demo-service
           chmod +x gradlew
           ./gradlew build
   package-service:
@@ -37,7 +37,7 @@ jobs:
           cache: gradle
       - name: Containerize and publish image
         run: |
-          cd demo-service-knative
+          demo-service
           chmod +x gradlew
           ./gradlew bootBuildImage --publishImage --imageName nareshkalakanti/demo-service-knative-goto:1.0 -PregistryUrl=${{ secrets.REGISTRY_URL }} -PregistryUsername=${{ secrets.REGISTRY_USERNAME }} -PregistryToken=${{ secrets.REGISTRY_TOKEN }}
 
@@ -55,7 +55,7 @@ jobs:
           cache: gradle
       - name: Compile and test application
         run: |
-          cd demo-service-knative
+          demo-service
           chmod +x gradlew
           ./gradlew build
   package-native:
@@ -73,6 +73,6 @@ jobs:
           cache: gradle
       - name: Containerize and publish image
         run: |
-          cd demo-service-knative
+          demo-service
           chmod +x gradlew
           ./gradlew bootBuildImage --publishImage --imageName nareshkalakanti/demo-service-knative-goto:1.0 -PregistryUrl=${{ secrets.REGISTRY_URL }} -PregistryUsername=${{ secrets.REGISTRY_USERNAME }} -PregistryToken=${{ secrets.REGISTRY_TOKEN }}
