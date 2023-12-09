@@ -4,7 +4,7 @@ on:
     branches:
       - main
 env:
-  REGISTRY: ghcr.io
+  REGISTRY: docker.io
   VERSION: latest
   IMAGE_NAME: nareshkalakanti/demo-service-knative
 
